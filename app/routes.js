@@ -47,6 +47,9 @@ module.exports = (app, passport) => {
     }
   });
 
+  const challengeRouter = require('./challengesRouter.js');
+  app.use("/challenges", challengeRouter);
+  
   app.listen(5000, () => {
     console.log("listening on 5000..");
   });
