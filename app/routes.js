@@ -1,4 +1,4 @@
-module.exports = (app, passport) => {
+module.exports = (app, passport, database) => {
   app.get("/signup", (req, res) => {
     res.render("index");
   });
@@ -49,7 +49,7 @@ module.exports = (app, passport) => {
 
   const challengeRouter = require('./challengesRouter.js');
   app.use("/challenges", challengeRouter);
-  
+
   app.listen(5000, () => {
     console.log("listening on 5000..");
   });
