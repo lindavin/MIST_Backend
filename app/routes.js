@@ -38,7 +38,7 @@ module.exports = (app, passport, database) => {
       failureRedirect: "/login"
     })
   );
-
+    
   app.get("/logged", (req, res) => {
     if (req.isAuthenticated()) {
       res.render("logged");
@@ -47,7 +47,8 @@ module.exports = (app, passport, database) => {
     }
   });
 
-  const challengeRouter = require('./challengesRouter.js');
+  const challengeRouter = require('./challengesRouter')(database);
+  
   app.use("/challenges", challengeRouter);
   
   app.listen(5000, () => {

@@ -33,6 +33,6 @@ require('./app/loginStrategy')(passport, database.User);
 
 require('./app/signupStrategy')(passport, database.User);
 
-require('./app/routes')(app, passport);
+require('./app/routes')(app, passport, database);
 
 
