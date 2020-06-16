@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
 const passportLocal = require("passport-local-mongoose");
+const sanitize = require('mongo-sanitize');
 
 mongoose.connect("mongodb://localhost:27017/usersDB", {
     useNewUrlParser: true,
@@ -19,3 +20,6 @@ usersSchema.plugin(passportLocal);
 const User = mongoose.model("User", usersSchema);
 
 module.exports.User = User;
+module.exports.sanitize = sanitize; //sanitizes string
+
+

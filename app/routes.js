@@ -47,8 +47,15 @@ module.exports = (app, passport, database) => {
     }
   });
 
-  const challengeRouter = require('./challengesRouter.js');
-  app.use("/challenges", challengeRouter);
+  //const challengeRouter = require('./challengesRouter.js');
+  //app.use("/challenges", challengeRouter);
+
+  app.get('/challenges/create', (req,res) => {
+    res.render('create-challenge', {
+        user : req,
+        userData : req.user
+    });
+})
 
   app.listen(5000, () => {
     console.log("listening on 5000..");
