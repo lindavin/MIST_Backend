@@ -9,8 +9,9 @@ router.get('/', (req, res) => {
 
 router.get('/create', (req, res) => {
     res.render('create-challenge', {
-        user: req.session.user
-    }); //renders the form to create a challenge
-
+        user: req,
+        userData: req.user
+      }); //renders the form to create a challenge
 });
 module.exports = router;
+

@@ -3,24 +3,24 @@ module.exports = (app, passport, database) => {
     res.render("index");
   });
 
-  app.get('/signup', (req,res) => {
-      res.render('signup', {
-          user : req
-      });
+  app.get('/signup', (req, res) => {
+    res.render('signup', {
+      user: req
+    });
   })
 
-  app.post('/signup', 
-  passport.authenticate("signup", {
-    successRedirect: "/login",
-    failureRedirect: "/signup"
-  })
+  app.post('/signup',
+    passport.authenticate("signup", {
+      successRedirect: "/login",
+      failureRedirect: "/signup"
+    })
   )
 
-  app.get('/', (req,res) => {
-      res.render('about', {
-          user : req,
-          userData : req.user
-      });
+  app.get('/', (req, res) => {
+    res.render('about', {
+      user: req,
+      userData: req.user
+    });
   })
 
   app.get("/login", (req, res) => {
@@ -47,16 +47,9 @@ module.exports = (app, passport, database) => {
     }
   });
 
-  //const challengeRouter = require('./challengesRouter.js');
-  //app.use("/challenges", challengeRouter);
-
-  app.get('/challenges/create', (req,res) => {
-    res.render('create-challenge', {
-        user : req,
-        userData : req.user
-    });
-})
-
+  const challengeRouter = require('./challengesRouter.js');
+  app.use("/challenges", challengeRouter);
+  
   app.listen(5000, () => {
     console.log("listening on 5000..");
   });
